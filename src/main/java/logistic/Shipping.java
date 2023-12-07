@@ -13,7 +13,6 @@ import java.util.List;
 @Component
 public class Shipping {
     JdbcTemplate jdbcTemplate;
-
     public Shipping(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }

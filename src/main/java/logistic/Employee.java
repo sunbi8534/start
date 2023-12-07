@@ -7,10 +7,11 @@ import Dto.employeeDto.role;
 import Dto.employeeDto.saraly;
 import Dto.employeeDto.team;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
+@Service
 public class Employee {
     JdbcTemplate jdbcTemplate;
 
