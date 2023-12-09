@@ -1,22 +1,44 @@
 package logisticSystem.start;
 
-import logistic.Employee;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
-
-import java.util.Scanner;
+import logistic.BackEnd;
+import logistic.MainFrame;
 
 @Service
 @SpringBootApplication
-public class StartApplication {
+@ComponentScan(basePackages = {"logistic", "logisticSystem.start"})
+public class StartApplication extends MainFrame{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-	public static void main(String[] args) {
-		SpringApplication.run(StartApplication.class, args);
+	public StartApplication(BackEnd backEnd)
+	{
+		super(backEnd);
 	}
 
-
+	public static void main(String[] args)
+	{
+		SpringApplication.run(StartApplication.class, args);
+		
+		/*
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MainFrame mf = apc.getBean(StartApplication.class);
+			        mf.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		*/
+	}
 }
+
