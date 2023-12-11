@@ -41,7 +41,7 @@ description text,
 primary key(supplier_id)
 );
   
-create table `order`(
+create table order(
 order_id integer auto_increment,
 customer_id integer,
 order_date varchar(50),
