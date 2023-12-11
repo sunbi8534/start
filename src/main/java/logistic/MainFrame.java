@@ -99,7 +99,7 @@ public class MainFrame extends JFrame
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[]
 				{
 					"department", "employee", "role", "salary", "team",
-					"customer", "order_item", "`order`",
+					"customer", "order_item", "order",
 					"account_authority", "account", "personal_info",
 					"barcode", "category", "product_category", "product_info", "product", "supplier",
 					"place", "shipping_log", "shipping_requirement", "shipping", "transfer_status",
