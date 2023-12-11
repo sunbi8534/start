@@ -13,6 +13,15 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ItemListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Scanner;
 import java.awt.event.ItemEvent;
 import javax.swing.ListSelectionModel;
 
@@ -171,6 +180,29 @@ public class MainFrame extends JFrame
 		});
 		removeButton.setBounds(50, 424, 176, 48);
 		contentPane.add(removeButton);
+		
+		JButton createTableButton = new JButton("Create Table");
+		createTableButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				backEnd.txtToSQL("create.txt");
+			}
+		});
+		createTableButton.setBounds(437, 8, 121, 45);
+		contentPane.add(createTableButton);
+		
+		JButton insertExampleButton = new JButton("Insert Example");
+		insertExampleButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				backEnd.txtToSQL("insert.txt");
+				setCurrentTable(currentTableName);
+			}
+		});
+		insertExampleButton.setBounds(586, 8, 121, 45);
+		contentPane.add(insertExampleButton);
 		
 		setVisible(true);
 	}

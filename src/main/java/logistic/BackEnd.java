@@ -1,10 +1,16 @@
 package logistic;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -108,6 +114,32 @@ public class BackEnd
         
         //System.out.println(sql);
         jdbcTemplate.update(sql);
+    }
+    
+    public void txtToSQL(String fileName)
+    {
+    	ArrayList<String> sql = new ArrayList<String>();
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(fileName));
+			char tmp;
+			int i = 0;
+			sql.add(new String());
+			while((tmp = (char) br.read()) != (char) -1)
+			{
+				sql.set(i, sql.get(i) + tmp);
+				if(tmp == ';')
+				{
+					sql.add(new String());
+					i++;
+				}
+			}
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		for(int i = 0; i < sql.size() - 1; i++)
+			jdbcTemplate.update(sql.get(i));
     }
     
     private String[] validateInput(String[] inputValues)
